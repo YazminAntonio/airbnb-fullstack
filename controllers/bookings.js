@@ -4,7 +4,7 @@ const router = express.Router()
 
 // Create POST controller
 
-router.POST('/', (req, res) => {
+router.post('/', (req, res) => {
   res.send('Hello from bookings')
 })
 

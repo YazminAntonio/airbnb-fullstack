@@ -7,10 +7,10 @@ router.get('/', (req, res) => {
   res.send('Hello from houses')
 })
 router.get('/create', (req, res) => {
-  res.send('Create')
+  res.render('houses/create')
 })
 router.get('/:id', (req, res) => {
-  res.send('Id')
+  res.render('houses/one')
 })
 router.get('/:id/edit', (req, res) => {
   res.send('Id-edit')
