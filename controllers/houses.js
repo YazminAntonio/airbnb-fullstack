@@ -6,6 +6,23 @@ const router = express.Router()
 router.get('/', (req, res) => {
   res.send('Hello from houses')
 })
-
+router.get('/create', (req, res) => {
+  res.send('Create')
+})
+router.get('/:id', (req, res) => {
+  res.send('Id')
+})
+router.get('/:id/edit', (req, res) => {
+  res.send('Id-edit')
+})
+router.post('/', (req, res) => {
+  res.send('')
+})
+router.patch('/:id', (req, res) => {
+  res.send('House updated')
+})
+router.delete('/:id', (req, res) => {
+  res.send('House delete')
+})
 // Export module
 module.exports = router
