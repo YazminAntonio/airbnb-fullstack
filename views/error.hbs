@@ -1,2 +1,32 @@
-{{message}}
-{{error.stack}}
+
+
+<div class="container">
+	<!-- the part of the header the airbnb image -->
+	<header class="d-flex flex-wrap justify-content-center py-3 mb-4 ">
+		<a
+			href="/"
+			class="d-flex aling-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
+		>
+			<span class="fs-4"
+				><img src="images/logo-airbnb.png" alt="" width="100%" height="80%"
+			/></span>
+		</a>
+		<ul class="nav nav-pills">
+			<li class="nav-item">
+				<a class="nav-link">
+					<button type="button" class="btn btn-outline-secondary">
+						Login
+					</button>
+				</a>
+			</li>
+		</ul>
+	</header>
+</div>
+<div class="pricing-header px-3 py-3 mx-auto">
+	<div class="alert alert-danger" role="alert">
+	{{message}}
+	</div>
+	<div>
+		<pre>{{error.stack}}</pre>
+	</div>
+</div>
