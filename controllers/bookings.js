@@ -4,8 +4,17 @@ const router = express.Router()
 
 // Create POST controller
 
-router.post('/', (req, res) => {
-  res.send('Hello from bookings')
+router.post('/', (req, res, next) => {
+  try {
+    console.log(req.user)
+    if (!req.isAuthenticated()) {
+      res.render('/create')
+    } else {
+      res.redirect('auth/login')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 
 // Export module
