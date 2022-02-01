@@ -4,11 +4,11 @@ const router = express.Router()
 
 // Create POST controller
 router.get('/', (req, res) => {
-  res.render('houses/list')
+  let user = req.user
+  res.render('houses/list', { user })
 })
-router.get('/create', (req, res) => {
+router.get('/create', (req, res, next) => {
   try {
-    console.log(req.user)
     if (req.isAuthenticated()) {
       res.render('houses/create')
     } else {
@@ -18,20 +18,52 @@ router.get('/create', (req, res) => {
     next(err)
   }
 })
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res, next) => {
   res.render('houses/one')
 })
 router.get('/:id/edit', (req, res) => {
-  res.render('houses/edit')
+  try {
+    if (req.isAuthenticated()) {
+      res.render('houses/edit')
+    } else {
+      res.redirect('/auth/login')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
-router.post('/', (req, res) => {
-  res.render('houses/list')
+router.post('/', (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      res.render('houses/list')
+    } else {
+      res.redirect('/auth/login')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
-router.patch('/:id', (req, res) => {
-  res.render('houses/one')
+router.patch('/:id', (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      res.render('houses/one')
+    } else {
+      res.redirect('/auth/login')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
-router.delete('/:id', (req, res) => {
-  res.render('houses/one')
+router.delete('/:id', (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      res.render('houses/one')
+    } else {
+      res.redirect('/auth/login')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 
 // Export module

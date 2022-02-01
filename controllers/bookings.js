@@ -7,8 +7,8 @@ const router = express.Router()
 router.post('/', (req, res, next) => {
   try {
     console.log(req.user)
-    if (!req.isAuthenticated()) {
-      res.render('/create')
+    if (req.isAuthenticated()) {
+      res.render('Booking')
     } else {
       res.redirect('auth/login')
     }
