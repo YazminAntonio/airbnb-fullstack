@@ -4,8 +4,8 @@ const mongoose = require('mongoose')
 module.exports = mongoose.model('reviews', {
   author: {
     type: ObjectId,
-    required: true
-    //ref: //review this part
+    required: true,
+    ref: 'users'
   },
   date: {
     type: Date,
@@ -13,13 +13,13 @@ module.exports = mongoose.model('reviews', {
     default: now
   },
   description: {
-    type: Text,
+    type: String,
     required: true
   },
   house: {
     type: ObjectId,
-    required: true
-    //ref check this
+    required: true,
+    ref: 'houses'
   },
   rating: {
     type: Number

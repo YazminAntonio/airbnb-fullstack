@@ -3,18 +3,18 @@ const mongoose = require('mongoose')
 // Create the results moodel
 module.exports = mongoose.model('users', {
   avatar: {
-    type: Text
+    type: String
   },
   email: {
-    type: Text,
+    type: String,
     required: true
   },
   name: {
-    type: Text,
+    type: String,
     required: true
   },
   password: {
-    type: Text,
+    type: String,
     required: true
   }
 })

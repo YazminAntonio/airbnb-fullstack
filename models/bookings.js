@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
 
 // Create the results moodel
-module.exports = mongoose.model('users', {
+module.exports = mongoose.model('bookings', {
   author: {
     type: ObjectId,
-    required: true
+    required: true,
+    ref: 'users'
   },
   date: {
     type: Date,
@@ -12,12 +13,12 @@ module.exports = mongoose.model('users', {
     default: Now
   },
   description: {
-    type: Text,
+    type: String,
     required: true
   },
   house: {
     type: ObjectId,
-    required: true
-    //ref to houses
+    required: true,
+    ref: 'houses'
   }
 })

@@ -20,13 +20,13 @@ router.get('/:id/edit', (req, res) => {
   res.render('houses/edit')
 })
 router.post('/', (req, res) => {
-  res.send('houses/list')
+  res.render('houses/list')
 })
 router.patch('/:id', (req, res) => {
-  res.send('houses/one')
+  res.render('houses/one')
 })
 router.delete('/:id', (req, res) => {
-  res.send('houses/one')
+  res.render('houses/one')
 })
 
 // Export module

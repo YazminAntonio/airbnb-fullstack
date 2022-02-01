@@ -5,7 +5,7 @@ const router = express.Router()
 // Create POST controller
 
 router.get('/', (req, res) => {
-  res.send('Hello from profile')
+  res.render('profile')
 })
 router.patch('/', (req, res) => {
   res.send('Patch')

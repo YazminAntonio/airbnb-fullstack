@@ -13,8 +13,23 @@ router.get('/signup', (req, res) => {
   res.render('signup')
 })
 
-router.post('/login', (req, res) => {
-  res.render('login')
+router.post('/login', async (req, res, next) => {
+  try {
+    let user = await Users.findOne({
+      email: req.body.email,
+      password: req.body.password
+    })
+    console.log(user)
+    if (user) {
+      req.login(user, err => {
+        res.redirect('/houses')
+      })
+    } else {
+      throw new Error('User and password are not correct')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 
 router.post('/signup', async (req, res, next) => {
@@ -28,6 +43,7 @@ router.post('/signup', async (req, res, next) => {
         if (err) {
           throw err
         } else {
+          console.log(userJustCreate)
           res.redirect('/houses')
         }
       })

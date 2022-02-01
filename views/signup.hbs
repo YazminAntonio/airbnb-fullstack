@@ -1,14 +1,14 @@
 <img src="/images/thailand.jpg" class="img-fluid" alt="Thailand photo" />
 <form
 	class="container card-img-overlay card text-dark bg-light mb-3 mt-5"
-	style="width:25rem;" action="signup"
+	style="width:25rem;" method="post" href:"/auth/signup"
 >
 <div class="container mb-2">
 	<a href="/"><img src="/images/logo-airbnb.png" alt="Photo of the logo" /></a>
 </div>
 	<div class="mb-3">
 		<label class="form-label">Full Name</label>
-		<input type="text" class="form-control" required />
+		<input name="name" type="text" class="form-control" required />
 	</div>
 	<div class="mb-3">
 		<label class="form-label">Profile Picture</label>
@@ -16,11 +16,11 @@
 	</div>
 	<div class="mb-3">
 		<label class="form-label">Email</label>
-		<input name="name" type="email" class="form-control" required />
+		<input name="email" type="email" class="form-control" required />
 	</div>
 	<div class="mb-3">
 		<label class="form-label">Password</label>
-		<input type="password" class="form-control" required />
+		<input name="password" type="password" class="form-control" required />
 	</div>
 	<div><button class="btn btn-success">Signup</button></div>
 	<div>

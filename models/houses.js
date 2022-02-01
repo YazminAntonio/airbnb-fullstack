@@ -3,21 +3,19 @@ const mongoose = require('mongoose')
 // Create the results moodel
 module.exports = mongoose.model('houses', {
   description: {
-    type: Text,
+    type: String,
     required: true
   },
   host: {
     type: ObjectId,
-    required: true
-    //ref: //review this part
+    required: true,
+    ref: 'users'
   },
   location: {
-    type: Text,
+    type: String,
     required: true
   },
-  photos: {
-    type: String //review this part
-  },
+  photos: [{ type: String }],
   price: {
     type: Number,
     required: true
@@ -27,7 +25,7 @@ module.exports = mongoose.model('houses', {
     required: true
   },
   title: {
-    type: Text,
+    type: String,
     required: true
   }
 })
