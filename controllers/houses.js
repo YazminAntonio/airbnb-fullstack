@@ -4,25 +4,30 @@ const router = express.Router()
 
 // Create POST controller
 router.get('/', (req, res) => {
-  res.send('Hello from houses')
+  res.render('houses/list')
 })
 router.get('/create', (req, res) => {
+  // if (req.isAuhenticaded()) {
   res.render('houses/create')
+  // } else {
+  //   res.redirect('/sigup')
+  // }
 })
 router.get('/:id', (req, res) => {
   res.render('houses/one')
 })
 router.get('/:id/edit', (req, res) => {
-  res.send('Id-edit')
+  res.render('houses/edit')
 })
 router.post('/', (req, res) => {
-  res.send('')
+  res.send('houses/list')
 })
 router.patch('/:id', (req, res) => {
-  res.send('House updated')
+  res.send('houses/one')
 })
 router.delete('/:id', (req, res) => {
-  res.send('House delete')
+  res.send('houses/one')
 })
+
 // Export module
 module.exports = router

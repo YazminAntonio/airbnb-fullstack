@@ -2,19 +2,22 @@ const mongoose = require('mongoose')
 
 // Create the results moodel
 module.exports = mongoose.model('users', {
-  avatar: {
-    type: Text
+  author: {
+    type: ObjectId,
+    required: true
   },
-  email: {
+  date: {
+    type: Date,
+    required: true,
+    default: Now
+  },
+  description: {
     type: Text,
     required: true
   },
-  name: {
-    type: Text,
+  house: {
+    type: ObjectId,
     required: true
-  },
-  password: {
-    type: Text,
-    required: true
+    //ref to houses
   }
 })
