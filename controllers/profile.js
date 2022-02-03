@@ -16,8 +16,11 @@ router.get('/', async (req, res, next) => {
             // )
             // let user = await Users.find(req.user._id)
 
-            console.log(userHouses)
-            res.render('profile', { user: req.user, userHouses })
+            // console.log(userHouses)
+            res.render('profile', {
+                user: req.user,
+                userHouses
+            })
             //console.log(user)
         } else {
             res.redirect('/auth/login')
@@ -31,8 +34,14 @@ router.patch('/', async (req, res, next) => {
         if (!req.isAuthenticated()) {
             res.redirect('/auth/login')
         } else {
-            //  let user = await Users.findIdAndUpdate()
-            //  res.send('/profile')
+            let { name } = req.body
+            let lineUpdated = await Users.findByIdAndUpdate(
+                req.user._id,
+                name,
+                { new: true },
+                (err, lineUpdated) => {}
+            )
+            res.redirect('/profile')
         }
     } catch (err) {
         next(err)

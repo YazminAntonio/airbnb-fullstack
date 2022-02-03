@@ -7,11 +7,11 @@
 		<div class="col-4">
 			<h1>Profile</h1>
 			<hr />
-			<form action="/profile?_method=PATCH" method="post">
+			<form action="/profile?_method=patch" method="post">
 				<div class="mb-3 mt-3">
 					<label class="form-label">User Name</label>
 					<div>
-						<input name="{{user.name}}"type="text" class="form-control" value="{{user.name}}" />
+						<input name="name" type="text" class="form-control" value="{{user.name}}" />
 					</div>
 				</div>
 				<div class="mb-3">
@@ -19,33 +19,37 @@
 						>Email</label
 					>
 					<input
-					name="{{user.email}}"
+					name="email"
 						type="email"
 						class="form-control"
 					value="{{user.email}}"/>
 				</div>
-			</form>
+
 			<p>Profile Picture</p>
 <div>
 				<img
 					src="{{user.avatar}}"
 					class="rounded-circle"
 					width="70px"
+					name="avatar"
 				/>
 </div>
 
-			<button name="changes"class="btn btn-secondary mt-2">
+			<button class="btn btn-secondary mt-2">
 				Save Changes
 			</button>
 		</div>
+			</form>
 		<!--Second columns listenings-->
-
 		<div class="col-8">
+		<form action="/houses/create" method="get">
+
 			<h1>List of Houses</h1>
 			<hr />
-			<button name="listofhouse" class="btn btn-secondary">
+			<button class="btn btn-secondary">
 				List a House
 			</button>
+		</form>
 			{{#each userHouses as |house|}}
 			<div class="card mb-3 mt-2" style="max-width: 1000px;">
 				<div class="row g-0">
@@ -66,7 +70,7 @@
 							<button action="/:id/edit" class="btn btn-outline-secondary">
 								Edit
 							</button>
-							<button action="/:id" class="btn btn-outline-secondary">
+							<button action="/houses?" class="btn btn-outline-secondary">
 								View
 							</button>
 							<form>
