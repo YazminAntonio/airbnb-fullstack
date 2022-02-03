@@ -7,94 +7,23 @@
 	<div class="row row-cols-2">
 		<div>
 			<img
-				src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+				src="{{house.photos.[0]}}"
 				class="card-img"
-				alt="..."
 			/>
 		</div>
 		<!-- here is the part with the cards -->
 
-		<div class="row row-cols-3">
+<div class="row row-cols-3">
+	{{#each house.photos as |photo|}}
 			<div class="col">
 				<div>
 					<img
-						src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+						src="{{photo}}"
 						class="card-img-top"
-						alt="..."
 					/>
 				</div>
 			</div>
-			<div class="col">
-				<div>
-					<img
-						src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_02.png"
-						class="card-img-top"
-						alt="..."
-					/>
-				</div>
-			</div>
-			<div class="col">
-				<div>
-					<img
-						src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_03.png"
-						class="card-img-top"
-						alt="..."
-					/>
-				</div>
-			</div>
-			<div class="col">
-				<div class="mt-3">
-					<img
-						src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_04.png"
-						class="card-img-top"
-						alt="..."
-					/>
-				</div>
-			</div>
-			<div class="col">
-				<div class="mt-3">
-					<img
-						src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_05.png"
-						class="card-img-top"
-						alt="..."
-					/>
-				</div>
-			</div>
-			<div class="col">
-				<div class="mt-3">
-					<img
-						src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_06.png"
-						class="card-img-top"
-						alt="..."
-					/>
-				</div>
-			</div>
-			<div class="col">
-				<div class="mt-3">
-					<img
-						src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_07.png"
-						class="card-img-top"
-						alt="..."
-					/>
-				</div>
-			</div>
-			<div class="col">
-				<div class="mt-3">
-					<img
-						src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_08.png"
-						class="card-img-top"
-						alt="..."
-					/>
-				</div>
-			</div>
-			<div class="col">
-				<div class="mt-3">
-					<img
-						src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_09.png"
-						class="card-img-top"
-						alt="..."
-					/>
-				</div>
+			{{/each}}
 			</div>
 		</div>
 	</div>
@@ -105,19 +34,18 @@
 		<div class="col-8">
 			<div class="card border border-white">
 				<div class="card-body">
-					<h4 class="card-title">House Name</h4>
-					<p class="card-subtitle mb-2 text-muted">Ubication</p>
+					<h4 class="card-title">{{house.title}}</h4>
+					<p class="card-subtitle mb-2 text-muted">{{house.location}}</p>
+					{{#if user}}
 					<div>
-						<a>Name User</a>
+						<a>{{user.name}}</a>
 					</div>
+					{{else}}
+					<div><a></a></div>
+					{{/if}}
 					<div>
 						<p class="card-text mb-4 ">
-							Description of the house: A house is a single-unit residential
-							building. ... Most conventional modern houses in Western
-							cultures will contain one or more bedrooms and bathrooms, a
-							kitchen or cooking area, and a living room. A house may have a
-							separate dining room, or the eating area may be integrated
-							into another room
+							{{house.description}}
 						</p>
 					</div>
 					<div>
@@ -152,7 +80,7 @@
 		<div class="col-4 mt-4">
 			<div class="shadow p-3 mb-5 bg-body rounded">
 				<div>
-					<h6 class="card-title ps-2 mt-2 ">$350/night</h6>
+					<h6 class="card-title ps-2 mt-2 ">${{house.price}}</h6>
 				</div>
 				<div class="card-subtitle ps-2 ">0 Review</div>
 				<div class="pt-2">
