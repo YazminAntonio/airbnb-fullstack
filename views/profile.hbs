@@ -66,17 +66,17 @@
 							<small >{{house.location}}  ${{house.price}}</small>
 							<p class="card-text mt-2">
 							{{house.description}}
-						</p>
-							<button action="/:id/edit" class="btn btn-outline-secondary">
+						</p><form action="/houses/{{house._id}}/edit" method="get">
+							<button class="btn btn-outline-secondary">
 								Edit
-							</button>
-							<button action="/houses?" class="btn btn-outline-secondary">
+							</button></form>
+							<form action="/houses/{{house._id}}" method="get"><button  class="btn btn-outline-secondary">
 								View
-							</button>
+							</button></form>
 							<form>
 								<button  class="btn btn-outline-secondary">
 									Delete
-								</button>
+								</button></form>
 						</div>
 					</div>
 				</div>

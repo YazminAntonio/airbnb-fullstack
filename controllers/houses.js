@@ -47,12 +47,13 @@ router.get('/:id', async (req, res, next) => {
     //pass house to template
     res.render('houses/one', { user: req.user, house })
 })
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', async (req, res, next) => {
     try {
-        if (req.isAuthenticated()) {
-            res.render('houses/edit')
-        } else {
+        if (!req.isAuthenticated()) {
             res.redirect('/auth/login')
+        } else {
+            let house = await Houses.findById(req.params.id)
+            res.render('houses/edit', { user: req.user, house })
         }
     } catch (err) {
         next(err)
