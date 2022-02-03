@@ -4,23 +4,23 @@
 <div class="container">
 	<h1>Edit House</h1>
 </div>
-<form action="/houses/{{houses.id}}?">
+<form action="/houses/{{houses.id}}?_method=patch" method="post">
 	<div class="mb-3 container">
 		<label class="form-label">House Title</label>
-		<input name="title" type="text" class="form-control" required value="title"/>
+		<input name="title" type="text" class="form-control"  value="title"/>
 	</div>
 	<div class="mb-3 container">
 		<label class="form-label">Description</label>
-		<textarea name="description" class="form-control" rows="6" required value="description">{{house.description}}</textarea>
+		<textarea name="description" class="form-control" rows="6"  value="description">{{house.description}}</textarea>
 	</div>
 	<div class="mb-0 container">
 		<label class="form-label">Rooms</label>
 	</div>
 	<div class="mb-3 container">
-		<input name="rooms" value="{{house.rooms}}" type="number" class="form-control" required min="1" max="15" />
+		<input name="rooms" value="{{house.rooms}}" type="number" class="form-control"  min="1" max="15" />
 	</div>
 	<div class="mb-3 container">
-		<label class="form-label" required name="location"></label>
+		<label class="form-label"  name="location"></label>
 		<div class="mb-3">
 			<select
 				class="form-select form-select-lg"
@@ -37,40 +37,30 @@
 	</div>
 	<div class="input-group mb-3 container">
 		<span class="input-group-text">$</span>
-		<input type="number" value="{{house.price}}"class="form-control" min="1" required />
+		<input type="number" value="{{house.price}}"class="form-control" min="1"/>
 	</div>
 	<div class="mb-0 container">
 		<label class="form-label">Photos</label>
 	</div>
-	<div class="input-group mb-1 container">
+
+		{{#each house.photos as |photo|}}
+			<div class="input-group mb-1 container">
 		<input
 			class="form-control"
 			name="photos"
-			placeholder="{{house.photos}}"
-			value="photos"
+			placeholder="{{photo}}"
 		/>
 	</div>
-	<div class="input-group mb-1 container">
-		<input class="form-control" type="url" placeholder="https://" 	value="photos"/>
-	</div>
-	<div class="input-group mb-1 container">
-		<input class="form-control" type="url" placeholder="https://" 	value="photos" />
-	</div>
-	<div class="input-group mb-1 container">
-		<input class="form-control" type="url" placeholder="https://" 	value="photos"/>
-	</div>
-	<div class="input-group mb-1 container">
-		<input class="form-control" type="url" placeholder="https://"	value="photos" />
-	</div>
-	<div class="input-group mb-1 container">
-		<input class="form-control" type="url" placeholder="https://"	value="photos" />
-	</div>
-	<div class="input-group mb-1 container">
-		<input class="form-control" type="url" placeholder="https://" 	value="photos"/>
-	</div>
+	{{/each}}
+
 	<div class="mt-3 container">
 		<button class="btn btn-success">
-			Submit
+			Save the changes
 		</button>
+		<form>
+		<button class="btn btn-danger">
+			Delete
+		</button>
+	</form>
 	</div>
 </form>
