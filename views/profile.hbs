@@ -7,11 +7,11 @@
 		<div class="col-4">
 			<h1>Profile</h1>
 			<hr />
-			<form method="get">
+			<form action="/profile?_method=PATCH" method="post">
 				<div class="mb-3 mt-3">
 					<label class="form-label">User Name</label>
 					<div>
-						<input type="text" class="form-control" value="{{user.name}}" />
+						<input name="{{user.name}}"type="text" class="form-control" value="{{user.name}}" />
 					</div>
 				</div>
 				<div class="mb-3">
@@ -19,6 +19,7 @@
 						>Email</label
 					>
 					<input
+					name="{{user.email}}"
 						type="email"
 						class="form-control"
 					value="{{user.email}}"/>
@@ -33,49 +34,50 @@
 				/>
 </div>
 
-			<button type="submit" class="btn btn-secondary mt-2">
+			<button name="changes"class="btn btn-secondary mt-2">
 				Save Changes
 			</button>
 		</div>
 		<!--Second columns listenings-->
-		{{#each houses as |house|}}
+
 		<div class="col-8">
-			<h1>My Listings</h1>
+			<h1>List of Houses</h1>
 			<hr />
-			<button type="submit" class="btn btn-secondary">
+			<button name="listofhouse" class="btn btn-secondary">
 				List a House
 			</button>
+			{{#each userHouses as |house|}}
 			<div class="card mb-3 mt-2" style="max-width: 1000px;">
 				<div class="row g-0">
 					<div class="col-md-4">
 						<img
 							src="{{house.photos.[0]}}"
 							class="img-fluid rounded-start"
-							alt="..."
 						/>
 					</div>
 					<div class="col-md-8">
 						<div class="card-body">
-							<h5 class="card-title">CLuxury villa in Chaweng</h5>
+							<h5 class="card-title">{{house.title}}</h5>
 							<i class="fas fa-map-marker-alt"></i>
-							<small id="address">Koh Samui . 4 rooms</small>
+							<small >{{house.location}}  ${{house.price}}</small>
 							<p class="card-text mt-2">
 							{{house.description}}
-							</p>
-							<button type="submit" class="btn btn-outline-secondary">
+						</p>
+							<button action="/:id/edit" class="btn btn-outline-secondary">
 								Edit
 							</button>
-							<button
-								id="view"
-								type="submit"
-								class="btn btn-outline-secondary"
-							>
+							<button action="/:id" class="btn btn-outline-secondary">
 								View
 							</button>
+							<form>
+								<button  class="btn btn-outline-secondary">
+									Delete
+								</button>
 						</div>
 					</div>
 				</div>
-			</div>{{/each}}
+			</div>
+			{{/each}}
 		</div>
 	</div>
 </div>

@@ -2,17 +2,23 @@
 const express = require('express')
 const router = express.Router()
 const Houses = require('../models/houses')
-//const Users = require('')
+const Users = require('../models/users')
 // Create POST controller
 
 router.get('/', async (req, res, next) => {
     try {
         if (req.isAuthenticated()) {
-            let userHouse = await Houses.findById(req.params.id).populate(
-                'host'
-            )
-            console.log(userHouse)
-            res.render('profile', { user: req.user, userHouse })
+            let userHouses = await Houses.find({
+                host: req.user._id
+            }).populate('host')
+            // let userHouses = await Houses.find({ host: req.user._id }).populate(
+            //     'host'
+            // )
+            // let user = await Users.find(req.user._id)
+
+            console.log(userHouses)
+            res.render('profile', { user: req.user, userHouses })
+            //console.log(user)
         } else {
             res.redirect('/auth/login')
         }
