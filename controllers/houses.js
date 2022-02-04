@@ -52,7 +52,7 @@ router.get('/:id/edit', async (req, res, next) => {
         if (!req.isAuthenticated()) {
             res.redirect('/auth/login')
         } else {
-            let house = await Houses.findById(req.params.id)
+            let house = await Houses.findById(req.params.id).populate('host')
             res.render('houses/edit', { user: req.user, house })
         }
     } catch (err) {
@@ -75,23 +75,30 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-router.patch('/:id', (req, res, next) => {
+router.patch('/:id', async (req, res, next) => {
     try {
-        if (req.isAuthenticated()) {
-            res.redirect(`/houses/${house._id}`)
-        } else {
+        if (!req.isAuthenticated()) {
             res.redirect('/auth/login')
+        } else {
+            let house = await Houses.findByIdAndUpdate(
+                req.params.id,
+                req.body,
+                { new: true }
+            )
+            console.log(house)
+            res.redirect(`/houses/${house._id}`)
         }
     } catch (err) {
         next(err)
     }
 })
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
     try {
-        if (req.isAuthenticated()) {
-            res.render('houses/one')
-        } else {
+        if (!req.isAuthenticated()) {
             res.redirect('/auth/login')
+        } else {
+            let deleteHouse = await Houses.findByIdAndDelete(req.params.id)
+            res.redirect('/profile')
         }
     } catch (err) {
         next(err)
