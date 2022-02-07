@@ -9,6 +9,7 @@
 			<img
 				src="{{house.photos.[0]}}"
 				class="card-img"
+				id="bigimg"
 			/>
 		</div>
 		<!-- here is the part with the cards -->
@@ -20,6 +21,7 @@
 					<img
 						src="{{photo}}"
 						class="card-img-top"
+						onclick="changePhoto(this)"
 					/>
 				</div>
 			</div>
@@ -36,7 +38,7 @@
 				<div class="card-body">
 					<h4 class="card-title">{{house.title}}</h4>
 					<p class="card-subtitle mb-2 text-muted">{{house.location}}</p>
-			
+
 					<div>
 						<a>{{user.name}}</a>
 					<div>
@@ -50,17 +52,16 @@
 							<label class="form-label mb-0">Leave a review</label>
 							<textarea
 								class="form-control"
-								id="exampleFormControlTextarea1"
 								rows="3"
 							></textarea>
 						</div>
 						<div>
 							<div>
-								<button type="button" class="btn btn-outline-success">
+								<button class="btn btn-outline-success">
 									like
 								</button>
-								<button type="button" class="btn btn-outline-danger">
-									no like
+								<button class="btn btn-outline-danger" >
+									<i class="far fa-thumbs-up" color="red"></i>
 								</button>
 							</div>
 						</div>
@@ -80,6 +81,8 @@
 				</div>
 				<div class="card-subtitle ps-2 ">0 Review</div>
 				<div class="pt-2">
+					<form  action="/bookings" method="post">
+						<input name="title" action="hidden" class="form-control"/>
 					<textarea
 						class="form-control form-comtrol-sm"
 						placeholder="Send the host a message..."
@@ -87,9 +90,10 @@
 					></textarea>
 				</div>
 				<div class="pt-3">
-					<button type="submit" class="btn btn-success btn-sm">
+					<button  class="btn btn-success btn-sm">
 						Request Booking
 					</button>
+				</form>
 				</div>
 			</div>
 		</div>
