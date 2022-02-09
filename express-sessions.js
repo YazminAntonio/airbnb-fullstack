@@ -27,13 +27,13 @@ module.exports = app => {
   )
 
   const sessionStore = new MongoDBStore({
-    uri: process.env.MONGODB_URL,
+    uri: process..MONGODB_URL,
     collection: 'sessions'
   })
 
   app.use(
     session({
-      secret: process.env.SESSION_SECRET,
+      secret: process..SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
       rolling: true,

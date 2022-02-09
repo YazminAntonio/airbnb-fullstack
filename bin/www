@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/ node
 
 // Module dependencies
 
@@ -20,9 +20,9 @@ const normalizePort = val => {
 	return false
 }
 
-// Get port from environment and store in Express
+// Get port from ironment and store in Express
 
-const port = normalizePort(process.env.PORT || '3000')
+const port = normalizePort(process..PORT || '3000')
 app.set('port', port)
 
 // Create HTTP server

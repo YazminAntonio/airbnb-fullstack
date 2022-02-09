@@ -9,7 +9,7 @@ const mongoose = require('mongoose')
 const hbs = require('hbs')
 const hbsUtils = require('hbs-utils')(hbs)
 const methodOverride = require('method-override')
-require('dotenv').config()
+require('dot').config()
 
 // Build the App
 const app = express()
@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Database
 mongoose.connect(
-  process.env.MONGODB_URL,
+  process..MONGODB_URL,
   { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false },
   () => {
     console.log('Connected to MongoDB')
@@ -65,7 +65,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   // Only provides full error in development
   res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
+  res.locals.error = req.app.get('') === 'development' ? err : {}
   res.locals.coder = req.coder
   res.locals.hideSearch = true
   // Render the error page
