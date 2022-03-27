@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Database
 mongoose.connect(
-  process..MONGODB_URL,
+  process.env.MONGODB_URL,
   { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false },
   () => {
     console.log('Connected to MongoDB')

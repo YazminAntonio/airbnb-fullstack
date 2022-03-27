@@ -7,7 +7,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "connect-mongodb-session": "^2.3.1",
+    "connect-mongodb-session": "^3.1.1",
     "cookie-parser": "~1.4.4",
     "dot": "^8.2.0",
     "eslint-plugin-html": "^6.2.0",
